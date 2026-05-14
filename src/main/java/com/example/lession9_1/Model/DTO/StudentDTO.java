@@ -1,6 +1,7 @@
 package com.example.lession9_1.Model.DTO;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class StudentDTO {
@@ -21,5 +22,9 @@ public class StudentDTO {
     @NotBLank(message = "Điểm không được để trống")
     @Size(min = 0,max = 10)
     private Double gpa;
+    //LS3
+    @Pattern(regexp = "SV\\d{4}$",message = "Mã SV phải có định dạng SVXXXX")
+    private String StudentCode;
+
 
 }
