@@ -1,6 +1,7 @@
 package com.example.lession9_1.Model.DTO;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
 public class StudentDTO {
@@ -76,5 +77,22 @@ public class StudentDTO {
 
     public void setStudentCode(String studentCode) {
         studentCode = studentCode;
+    }
+
+    // LS5
+    @Valid
+    @NotNull(message = "Thông tin phụ huynh không được để trống")
+    private ParentDTO parent;
+
+    public StudentDTO(ParentDTO parent) {
+        this.parent = parent;
+    }
+
+    public ParentDTO getParent() {
+        return parent;
+    }
+
+    public void setParent(ParentDTO parent) {
+        this.parent = parent;
     }
 }

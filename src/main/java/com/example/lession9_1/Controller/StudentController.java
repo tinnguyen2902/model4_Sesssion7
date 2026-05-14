@@ -22,7 +22,7 @@ public class StudentController {
     ){
         // nếu có lỗi
         if (result.hasErrors()){
-            String errorMessage = result.getFieldError().getDefaultMessage();
+            String errorMessage = result.getFieldErrors().get(0).getDefaultMessage();
             return  ResponseEntity.badRequest().body(errorMessage);
         }
         return ResponseEntity.ok("Thêm SV thành công");
