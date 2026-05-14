@@ -1,26 +1,31 @@
 package com.example.lession9_1.Model.DTO;
 
-import jakarta.validation.Valid;
+import com.example.lession9_1.Validation.ViettelPhone; // Đảm bảo đã import annotation tự tạo
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public class ParentDTO {
-    @NotBlank(message = "Tên phụ huynh không được trống")
+
+    // 1. Tên phụ huynh:
+    @NotBlank(message = "Tên phụ huynh không được để trống")
     @Pattern(regexp = "^[A-Z].*", message = "Tên phụ huynh phải viết hoa chữ cái đầu")
     private String name;
-    @NotNull(message = "Số điện thoại không được trống")
-    @Pattern(regexp = "^0\\d{9}$", message = "Số điện thoại phải bắt đầu bằng số 0 và có đúng 10 số")
+
+    // 2. Số điện thoại:
+    @NotBlank(message = "Số điện thoại không được để trống")
+    @ViettelPhone
     private String phoneNumber;
 
     public ParentDTO() {
     }
 
+    // 4. Constructor đầy đủ tham số
     public ParentDTO(String name, String phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
     }
 
+    // 5. Getter và Setter (Chỉ cần một bộ duy nhất)
     public String getName() {
         return name;
     }
@@ -36,5 +41,4 @@ public class ParentDTO {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
 }
